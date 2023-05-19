@@ -19,3 +19,13 @@ aside div {
     display: flex;
     flex-direction: column;
 }
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 30.333%;
+    align-items: center;
+    background-color: mediumslateblue;
+    border-radius: 51.775pt;
+}
