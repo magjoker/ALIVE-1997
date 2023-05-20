@@ -58,6 +58,7 @@ margin: 0%;
 #forecast div {
     display: grid;
     grid: 16.991% 23.775% / auto auto auto;
+    word-spacing: 15%;
 
 }
 

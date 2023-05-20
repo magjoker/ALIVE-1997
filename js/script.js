@@ -3,12 +3,14 @@
 let WeatherKey = "f90c5ff077454a27acde7bac5d0c02cd";
 
 let searchForm = document.getElementById('searchForm');
-let searchInput = document.getElementById('searchInput');
+let whatCity = document.getElementById('whatCity');
 let searchHistory = document.getElementById('searchHistory');
 let currant = document.getElementById('current');
 let forecast = document.getElementById('forecast');
 
 let searchLog;
+
+// renders cities in local storage as buttons that will populate relevant weather data when clicked 
 
 function showHistory () {
     searchHistory.textContent = "";
@@ -20,6 +22,8 @@ function showHistory () {
     }
 }
 
+// pulls the cities out of the local storage key "searches"
+
 function getHistory () {
     searchLog = JSON.parse(localStorage.getItem("searches")) || [];
     showHistory();
@@ -27,7 +31,7 @@ function getHistory () {
 
 getHistory();
 
-// this function renders the weather data on to the webpage by creating dynamic HTML elements
+// this function renders the current weather data on to the webpage by creating dynamic HTML elements
 
     function renderPrimusCurrant (data) {
         currant.textContent = "";
@@ -56,6 +60,8 @@ getHistory();
         currant.append(icon);
     }
 
+    //this functions' code sets the stage to pull data from the API for current weather
+
     function displayPrimusCurrant(name) {
     let cityName = name;
     let cityQuery = 
@@ -83,7 +89,7 @@ getHistory();
 
     let avgHumidity = 0;
 
-    // in this function 
+    // in this function that handles the forecast data from the API, cleans it up for the user and renders a 5 day forecast "pillarOfWeather" refers to the card on the page
 
     function renderForecast(data) {
         forecast.textContent = "";
@@ -104,12 +110,12 @@ getHistory();
 
             if(infoIndex.includes(i)) {
                 hiTemp = document.createElement("div");
-                hiTemp.innerHTML = "High: " + parseInt(forecastHigh);
+                hiTemp.innerHTML = "Highest Temp: " + parseInt(forecastHigh);
                 pillarOfWeather.append(hiTemp);
                 forecastHigh = -75;
 
                 lowTemp = document.createElement("div");
-                lowTemp.innerHTML = "Low: " + parseInt(forecastLow);
+                lowTemp.innerHTML = "Lowest Temp: " + parseInt(forecastLow);
                 pillarOfWeather.append(lowTemp);
                 forecastLow = 165;
 
@@ -119,7 +125,7 @@ getHistory();
                 avgHumidity = 0;
 
                 windSpeed = document.createElement("div");
-                windSpeed.innerHTML = "Wind: " + parseInt(avgWindSpeed / 8);
+                windSpeed.innerHTML = "Wind Speed: " + parseInt(avgWindSpeed / 8);
                 pillarOfWeather.append(windSpeed);
                 forecastHigh = 0;
 
@@ -150,16 +156,20 @@ getHistory();
         });
     }
 
+
+
     function searchCity(e) {
         e.preventDefault()
-        if (searchInput.value !== "") {
-            displayPrimusCurrant(searchInput.value);
-            displayForecast(searchInput.value);
-            storedSearches.push(searchInput.value);
-            localStorage.setItem("searches", JSON.stringify(storedSearches));
+        if (whatCity.value !== "") {
+            displayPrimusCurrant(whatCity.value);
+            displayForecast(whatCity.value);
+            searchLog.push(whatCity.value);
+            localStorage.setItem("searches", JSON.stringify(searchLog));
             getHistory();
         }
     }
+
+
 
     function searchCityFromHistory(name) {
         displayPrimusCurrant(name);
