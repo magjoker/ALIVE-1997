@@ -1,31 +1,82 @@
-body {
-background-image: radial-gradient(white,rgb(2, 204, 255),rgb(106, 0, 255));
+@font-face{
+    src: url('./fonts/Super-Retro-Italic-M54.ttf');
+    font-family: smr i
 }
 
-section {
+@font-face{
+    src: url('./fonts/Super-Retro-M54.ttf');
+    font-family: smr
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    font-size: 1.997rem;
+    font-family: smr i;
+    padding: 2rem;
+    /* font-family: smr; */
+}
+
+body {
+background-image: radial-gradient(rgb(181, 254, 122),rgb(2, 204, 255),rgb(106, 0, 255));
+margin: 0%;
+}
+
+#thirds {
     display: flex;
     flex-direction: row;
-    width: 30%;
-    height: 100%;
-    min-height: 77.5vh;
-}
-
-aside section {
-    display: flex;
-    align-items: center;
-}
-
-aside div {
-    display: flex;
-    flex-direction: column;
+    justify-content: space-between;
 }
 
 .cards {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: 30.333%;
+    justify-content: center;
+    padding: 1rem;
+    width: 30.994%;
     align-items: center;
-    background-color: mediumslateblue;
+    background-color: transparent;
+    border: 2px solid black;
     border-radius: 51.775pt;
+    height: 29.566rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding-top: 2rem;
+}
+
+#current {
+    display: flex;
+    flex-direction: column;
+    font-family: Georgia;
+    height: 37.566rem;
+    width: 2
+}
+
+#forecast {
+    height: 45.566rem;
+    display: grid;
+}
+
+#forecast div {
+    display: grid;
+    grid: 16.991% 23.775% / auto auto auto;
+
+}
+
+#searchForm {
+    display: flex;
+    justify-content: flex-start;
+}
+
+button {
+    border: 2px solid rgb(106, 0, 255);
+    border-radius: 20px;
+    background-color: transparent;
+}
+button:hover {
+    color: white;
+    border:2px solid rgb(181, 254, 122);
+}
+
+#searchInput {
+    border: 2px solid transparent;
+    border-radius: 20px;
 }
